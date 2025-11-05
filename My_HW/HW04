@@ -1,0 +1,19 @@
+import numpy as npy
+
+def f(x):
+    return npy.sin(x) * npy.cos(x)
+
+def trap_rule(a, b, n):
+    x_val = npy.linspace(a, b, n + 1)
+    y_val = npy.abs(f(x_val)) 
+    h = (b - a) / n 
+
+    area = (h / 2) * (y_val[0] + 2 * sum(y_val[1:-1]) + y_val[-1])
+    return area
+
+a, b = 0, 4 * npy.pi
+n = 1000 
+
+# Compute area
+ar = trap_rule(a, b, n)
+print("Approximated Area:", ar)
